@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mariana Ferreiro | DevOps Portfolio</title>
+    <style>
+        :root {
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --text-color: #e0e0e0;
+            --accent-color: #4CAF50;
+            --accent-hover: #45a049;
+            --border-color: #333333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* Header & Nav */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(18, 18, 18, 0.95);
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Main Container */
+        main {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 7rem 2rem 3rem 2rem;
+        }
+
+        section {
+            margin-bottom: 4rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--accent-color);
+            padding-left: 0.75rem;
+        }
+
+        /* Sobre mí */
+        .about-content {
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            font-size: 1.1rem;
+        }
+
+        /* Skills con Scroll */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            height: 180px; /* Altura fija para activar el scroll */
+            display: flex;
+            flex-direction: column;
+        }
+
+        .skill-card h3 {
+            color: var(--accent-color);
+            margin-bottom: 0.75rem;
+            font-size: 1.3rem;
+        }
+
+        .skill-scroll-content {
+            overflow-y: auto;
+            padding-right: 0.5rem;
+            scrollbar-width: thin;
+            scrollbar-color: var(--accent-color) var(--border-color);
+        }
+
+        /* Personalización de la barra de scroll para navegadores webkit */
+        .skill-scroll-content::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .skill-scroll-content::-webkit-scrollbar-track {
+            background: var(--border-color);
+            border-radius: 4px;
+        }
+
+        .skill-scroll-content::-webkit-scrollbar-thumb {
+            background-color: var(--accent-color);
+            border-radius: 4px;
+        }
+
+        /* Proyectos */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-image-container {
+            width: 100%;
+            height: 180px;
+            background-color: #2a2a2a;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .project-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .project-info {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .project-info h3 {
+            margin-bottom: 0.75rem;
+            font-size: 1.2rem;
+        }
+
+        .project-info p {
+            color: #b0b0b0;
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .tag {
+            align-self: flex-start;
+            background-color: rgba(76, 175, 80, 0.15);
+            color: var(--accent-color);
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid var(--border-color);
+            background-color: rgba(18, 18, 18, 0.95);
+        }
+
+        footer a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 1rem;
+            }
+            main {
+                padding: 6rem 1rem 2rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">Mariana Ferreiro</div>
+        <nav>
+            <ul>
+                <li><a href="#sobre-mi">Sobre mí</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#proyectos">Proyectos</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Contenido Principal -->
+    <main>
+        <!-- Sección Sobre mí -->
+        <section id="sobre-mi">
+            <h2>Sobre mí</h2>
+            <div class="about-content">
+                <p>Soy <strong>ESTUDIANTE</strong> y arranco esta microcredencial porque quiero potenciar mi perfil técnico integrando el desarrollo con la automatización y la infraestructura moderna.</p>
+            </div>
+        </section>
+
+        <!-- Sección Skills -->
+        <section id="skills">
+            <h2>Skills que voy a aprender</h2>
+            <div class="skills-container">
+                <!-- Skill 1 -->
+                <div class="skill-card">
+                    <h3>Git</h3>
+                    <div class="skill-scroll-content">
+                        <p>Control de versiones avanzado, flujos de trabajo colaborativo, gestión avanzada de ramas, resolución de conflictos complejos y buenas prácticas para la trazabilidad del código fuente en equipos distribuidos.</p>
+                    </div>
+                </div>
+                <!-- Skill 2 -->
+                <div class="skill-card">
+                    <h3>Docker</h3>
+                    <div class="skill-scroll-content">
+                        <p>Containerización de aplicaciones para asegurar consistencia absoluta entre entornos de desarrollo, pruebas y producción, diseño eficiente de Dockerfiles y gestión de contenedores interconectados con Docker Compose.</p>
+                    </div>
+                </div>
+                <!-- Skill 3 -->
+                <div class="skill-card">
+                    <h3>AWS</h3>
+                    <div class="skill-scroll-content">
+                        <p>Fundamentos de computación en la nube, despliegue de servicios escalables, configuración de redes virtuales aisladas (VPC), almacenamiento optimizado y arquitectura orientada a la alta disponibilidad y seguridad.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección Proyectos -->
+        <section id="proyectos">
+            <h2>Proyectos</h2>
+            <div class="projects-grid">
+                <!-- Proyecto 1 -->
+                <div class="project-card">
+                    <div class="project-image-container">
+                        <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=600&auto=format&fit=crop" alt="Pipeline CI/CD Automatizado">
+                    </div>
+                    <div class="project-info">
+                        <h3>Pipeline CI/CD Automatizado</h3>
+                        <p>Implementación de flujos de integración continua para pruebas y despliegue rápido usando contenedores.</p>
+                        <span class="tag">DevOps / Docker</span>
+                    </div>
+                </div>
+
+                <!-- Proyecto 2 -->
+                <div class="project-card">
+                    <div class="project-image-container">
+                        <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=600&auto=format&fit=crop" alt="Infraestructura como Código">
+                    </div>
+                    <div class="project-info">
+                        <h3>Infraestructura como Código</h3>
+                        <p>Aprovisionamiento automatizado de servidores y recursos en la nube optimizados para alta disponibilidad.</p>
+                        <span class="tag">AWS / IaC</span>
+                    </div>
+                </div>
+
+                <!-- Proyecto 3 -->
+                <div class="project-card">
+                    <div class="project-image-container">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=600&auto=format&fit=crop" alt="Monitoreo y Logs en Contenedores">
+                    </div>
+                    <div class="project-info">
+                        <h3>Monitoreo y Logs en Contenedores</h3>
+                        <p>Configuración de herramientas de observabilidad para auditar el rendimiento de servicios desplegados.</p>
+                        <span class="tag">Git / Docker</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>GitHub: <a href="https://github.com/MarianaFerreiro" target="_blank">github.com/MarianaFerreiro</a></p>
+    </footer>
+
+    <script>
+        // Script opcional para scroll suave en la navegación
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                document.querySelector(targetId).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
